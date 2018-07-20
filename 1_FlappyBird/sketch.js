@@ -53,3 +53,9 @@ function keyPressed() {
         bird.up(); 
     }    
 }
+
+function mousePressed() {
+    bird.up(); 
+    
+
+}
