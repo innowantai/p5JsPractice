@@ -7,13 +7,14 @@ let sliderN;
 function setup() {
     createCanvas(400,400);
     sliderD = createSlider(1,10,5);
-    sliderN = createSlider(1,10,5);
+    sliderN = createSlider(1,20,5,0.01);
 }
  
 
 function draw() { 
     d = sliderD.value();
-    n = sliderN.value();
+    //n = sliderN.value();
+    n += 0.01;
     let k = n / d  ;
     background(51);
     translate(width/2,height/2)
