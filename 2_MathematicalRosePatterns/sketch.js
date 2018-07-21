@@ -12,9 +12,10 @@ function setup() {
  
 
 function draw() { 
-    d = sliderD.value();
+    //d = sliderD.value();
     //n = sliderN.value();
-    n += 0.01;
+    n += 0.05;
+    d += 0.05
     let k = n / d  ;
     background(51);
     translate(width/2,height/2)
@@ -27,7 +28,7 @@ function draw() {
         let r = 200*cos(k*a);
         let x = r * sin(a);
         let y = r * cos(a);
-        vertex(x,y);
+        point(x,y);
     }
 
     endShape(CLOSE);
