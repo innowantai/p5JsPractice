@@ -14,8 +14,8 @@ function setup() {
 function draw() { 
     //d = sliderD.value();
     //n = sliderN.value();
-    n += 0.05;
-    d += 0.05
+    n += 0.01;
+    d += 0.001
     let k = n / d  ;
     background(51);
     translate(width/2,height/2)
@@ -24,14 +24,14 @@ function draw() {
     stroke(255);d
     noFill();
     strokeWeight(1);
-    for(let a = 0 ; a < TWO_PI * d ; a += 0.02){
+    for(let a = 0 ; a < TWO_PI * d ; a += 0.01){
         let r = 200*cos(k*a);
         let x = r * sin(a);
         let y = r * cos(a);
         point(x,y);
     }
 
-    endShape(CLOSE);
+   // endShape(CLOSE);
 }
 
  
