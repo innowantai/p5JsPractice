@@ -1,6 +1,7 @@
 let symbolSize = 26; 
 var streams = [];
 var fadeInterval = 1.6;
+
 function setup() {
     createCanvas(
         window.innerWidth,
@@ -40,7 +41,7 @@ function Symbol(x, y, speed, first, opacity) {
         if (frameCount % this.switchInterval == 0) {
             this.value = String.fromCharCode(
                 0x30A0 + round(random(0,96))
-            ); 
+            );  
         }
     }
 
