@@ -6,29 +6,38 @@
           0x30A0 + round(random(0,96))
         );  
     }
-2.
-
-
+2. 
 */ 
 
-let symbolSize = 26;
-let symbol ;
 
+let symbolSize = 26; 
+let stream;
+let streams = [];
 function setup () {
   createCanvas(
     window.innerWidth,
     window.innerHeight
   ); 
   background(51);
-  symbol = new Symbol(width/2,0,random(5,10))
-  symbol.setRandomSymbol();
-  textSize(symbolSize);
+  for(let i = 0 ; i <= width ; i+= symbolSize){
+    stream = new Stream();
+    stream.generateSymbols(i,-1000);
+    streams.push(stream); 
+  }
+
 }
 
 
 function draw () { 
   background(0);
-  symbol.rander();
+  // stream.rander();
+  streams.forEach(function (stream) {
+    stream.rander();
+  })
+
+
+
+  textSize(symbolSize);
 
 }
 
@@ -49,12 +58,12 @@ function Symbol (x,y,speed) {
   }
 
 
-  this.rander = function () {
-    fill(0,255,0);
-    text(this.value,this.x,this.y);
-    this.rain();
-    this.setRandomSymbol();
-  }
+  // this.rander = function () {
+  //   fill(0,255,0);
+  //   text(this.value,this.x,this.y);
+  //   this.rain();
+  //   this.setRandomSymbol();
+  // }
 
   // 讓文字往下掉，若到底端則恢復最上端
   this.rain = function () {
@@ -63,6 +72,27 @@ function Symbol (x,y,speed) {
  
 }
 
- function Stream () {
- 
- }
+function Stream () { 
+  this.symbols = [];
+  this.totalSymbols = round(random(5,20));
+  this.speed = random(5,20);
+
+  this.generateSymbols = function (x,y) { 
+
+    for(let i = 0; i <= this.totalSymbols;i++){      
+      symbol = new Symbol(x, y, this.speed); 
+      this.symbols.push(symbol);
+      y -= symbolSize;
+    }
+  }
+
+  this.rander = function () {
+    this.symbols.forEach(function (symbol) {
+      fill(0,255,0);
+      text(symbol.value,symbol.x,symbol.y);
+      symbol.setRandomSymbol();
+      symbol.rain();
+    });
+  }
+
+}
