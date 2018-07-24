@@ -5,17 +5,21 @@ let y;
 let m;
 let b;
 let oldb;
-let speed = 5;
+let diff;
+let speed = 3;
 let ballSize = 25;
 let canvasWidth = 500;
 let canvasHeight = 500;
 
 function setup () {
-    createCanvas(canvasWidth,canvasHeight)  
+    createCanvas(500,500)  
     x = 0;
-    m = random(0,1);
-    b = round(random(0,10));
+    // m = 0.16;
+    // b = 5;
+    m = random(0,10)
+    b = random(0,10)
     oldb = b;
+    diff = 1;
 }
 
 function draw () {
@@ -24,19 +28,20 @@ function draw () {
     y = m * x + b
 
     ellipse(x,y,ballSize,ballSize);
-    x += speed ;
-
+    x += speed ; 
     if(x >= canvasWidth || x < 0){
         oldb = b;
         b = ((m*m+1)/m)*x+b;
-        m = -1/m;
-        speed = -speed; 
-        print(m,b)
-    }else if(y >= canvasHeight){
-        b = 0;
-        m = -1/m;   
-        speed = -speed; 
-        print(m,b)
+        m = -1/m + random(-diff,diff);
+        speed = -speed;  
+    }else if(y > canvasHeight){ 
+        x = (canvasHeight - b)/m;
+        m = -1/m;    
+        b =  canvasHeight - m * x; 
+    }else if(y < 0){
+        x = (- b)/m;
+        m = -1/m;    
+        b =   - m * x; 
     }
 }
 
