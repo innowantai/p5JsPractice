@@ -2,14 +2,13 @@
 
 
 function setup () {
-    createCanvas(500,500)
+    createCanvas(400,400)
 }
 
 
 function draw () {
-    background(0);
-    fill(255);
-    ellipse(0 + frameCount,0 + frameCount,25,25);
+    background(51);
+    ellipse(200,200,24,24)
 }
 
 
