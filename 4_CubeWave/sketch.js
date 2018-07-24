@@ -7,8 +7,10 @@ function setup () {
 
 
 function draw () {
-    background(255);
-    fill(0);
+    background(0);
+    fill(255);
     ellipse(0 + frameCount,0 + frameCount,25,25);
 }
+
+
 
