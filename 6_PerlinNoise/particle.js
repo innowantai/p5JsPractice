@@ -29,7 +29,7 @@ function Particle () {
 
     this.show = function () {
         stroke(0,5);
-        strokeWeight(1);
+        strokeWeight(2);
         line(this.pos.x,this.pos.y,this.prevPos.x,this.prevPos.y)
         //point(this.pos.x,this.pos.y);
         this.updatePrev();

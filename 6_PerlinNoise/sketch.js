@@ -16,14 +16,14 @@ let flowfield ;
 
 
 function setup () {
-    createCanvas(400,300)
+    createCanvas(800,600)
     cols = floor(width / scl);
     rows = floor(height / scl); 
     fr = createP();
 
     flowfield = new Array(cols * rows);
 
-    for(let i = 0 ; i < 3000 ; i++){
+    for(let i = 0 ; i < 4000 ; i++){
         particles[i] = new Particle();
     }
 }
