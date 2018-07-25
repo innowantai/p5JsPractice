@@ -5,7 +5,7 @@
 
 /// start 19 mins 
 let inc = 0.1; 
-let scl = 10;
+let scl = 20;
 let cols , rows ;
 let zoff = 0;
 
@@ -16,7 +16,7 @@ let flowfield ;
 
 
 function setup () {
-    createCanvas(200,200)
+    createCanvas(800,600)
     cols = floor(width / scl);
     rows = floor(height / scl); 
     fr = createP();
