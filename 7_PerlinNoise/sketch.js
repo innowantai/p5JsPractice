@@ -2,6 +2,7 @@
 
 let xoff;
 let yoff;
+let zoff = 0;
 let inc = 0.1; 
 let scl = 10;
 let cols,rows;
@@ -21,7 +22,7 @@ function draw () {
         xoff = 0;
         for(let x = 0 ; x < cols ; x++){
             let index = (x + y * width) * 4;
-            let angle = noise(xoff,yoff) * TWO_PI;
+            let angle = noise(xoff,yoff,zoff) * TWO_PI;
             let v = p5.Vector.fromAngle(angle); 
             xoff += inc;  
             stroke(0);
@@ -29,10 +30,12 @@ function draw () {
             translate(x*scl,y*scl);
             rotate(v.heading()); 
             line(0,0,scl,0);
-            pop();
+            pop(); 
         }
-        yoff += inc;
+        yoff += inc; 
+        zoff += 0.0005
     }  
  
+    print(zoff)
     
 }
