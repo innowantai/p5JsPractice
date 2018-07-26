@@ -1,26 +1,32 @@
 
 
 let xoff;
-let scl = 0.1;
-let xstart = 0;
-
+let yoff;
+let inc = 0.1; 
+let scl = 10;
+let cols,rows;
 function setup () {
-    createCanvas(800,400)
+    createCanvas(200,200)
+    cols = width / scl;
+    row = height / scl;
 }
 
 function draw () { 
-    background(0);
-    beginShape();
-    noFill();
-    xoff = xstart;
-    for(let x = 0 ; x < width ; x++){
-        stroke(255);
-        let y = map(noise(xoff),0,1,0,height);
-        vertex(x,y);
-        xoff += scl;
-    }
-
-    xstart += scl;
-    endShape();
+    background(0); 
+    yoff = 0;
+    for(let y = 0 ; y < row;y++){
+        xoff = 0;
+        for(let x = 0 ; x < cols ; x++){
+            let index = (x + y * width) * 4
+            let r = noise(xoff,yoff) * 255
+            let g = noise(xoff,yoff) * 255
+            let b = noise(xoff,yoff) * 255
+            fill(r,g,b) 
+            rect(scl*x,scl*y,scl,scl) 
+            xoff += inc; 
+        }
+        yoff += inc;
+    } 
+ 
     
 }
